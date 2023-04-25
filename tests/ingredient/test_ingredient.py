@@ -4,23 +4,19 @@ from src.models.ingredient import (
 )  # noqa: F401, E261, E501
 
 
-INGREDIENTS = (
-    Ingredient("queijo mussarela"),
-    Ingredient("tomate"),
-)
-
-
 # Req 1
 def test_ingredient():
-    assert INGREDIENTS[0].restrictions == {
-        Restriction.ANIMAL_DERIVED,
+    queijo = Ingredient("queijo mussarela")
+    tomate = Ingredient("tomate")
+    assert queijo.restrictions == {
         Restriction.LACTOSE,
+        Restriction.ANIMAL_DERIVED,
         }
-    assert repr(INGREDIENTS[0]) == "Ingredient('queijo mussarela')"
-    assert repr(INGREDIENTS[0]) != "Ingredient('tomate')"
-    assert INGREDIENTS[0] == Ingredient("queijo mussarela")
-    assert INGREDIENTS[1] == Ingredient("tomate")
-    assert INGREDIENTS[0] != INGREDIENTS[1]
-    assert hash(INGREDIENTS[0]) == hash(Ingredient("queijo mussarela"))
-    assert hash(INGREDIENTS[1]) == hash(Ingredient("tomate"))
-    assert INGREDIENTS[0].name == "queijo mussarela"
+    assert repr(queijo) == "Ingredient('queijo mussarela')"
+    assert repr(queijo) != "Ingredient('tomate')"
+    assert queijo == Ingredient("queijo mussarela")
+    assert tomate == Ingredient("tomate")
+    assert queijo != tomate
+    assert hash(queijo) == hash(Ingredient("queijo mussarela"))
+    assert hash(queijo) != hash(Ingredient("tomate"))
+    assert tomate.name == "tomate"
