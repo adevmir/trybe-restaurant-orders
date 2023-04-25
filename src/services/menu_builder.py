@@ -1,5 +1,4 @@
 import pandas as pd
-
 from services.inventory_control import InventoryMapping
 from services.menu_data import MenuData
 
