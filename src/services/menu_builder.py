@@ -32,7 +32,8 @@ class MenuBuilder:
             'restrictions': [],
         }
         for dish in self.menu_data.dishes:
-            if restriction not in dish.get_restrictions():
+            in_stock = InventoryMapping.check_recipe_availability(self.inventory, dish.recipe)
+            if restriction not in dish.get_restrictions() and in_stock == True:
                 menu['dish_name'].append(dish.name),
                 menu['ingredients'].append(dish.get_ingredients()),
                 menu['price'].append(dish.price),

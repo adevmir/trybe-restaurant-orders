@@ -29,8 +29,11 @@ class InventoryMapping:
     def check_recipe_availability(self, recipe: Recipe):
         avaliability = False
         ingredient_list = list(recipe.keys())
-        for ingredient in ingredient_list:
-            avaliability = self.inventory[ingredient] >= recipe[ingredient]
+        try:
+            for ingredient in ingredient_list:
+                avaliability = self.inventory[ingredient] >= recipe[ingredient]
+        except KeyError:
+            return False
         return avaliability
 
     # Req 5.2
